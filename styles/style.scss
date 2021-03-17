@@ -1,0 +1,58 @@
+$footerColor: #2b2b2b;
+
+@font-face {
+    font-family: "Poppins";
+    src: url(../fonts/Poppins-Medium.ttf);
+}
+
+body {
+    font-family: "Poppins", Arial, Helvetica, sans-serif;
+}
+
+li {
+    list-style: none;
+}
+
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+header {
+    & > div {
+        text-align: center;
+    }
+
+    nav {
+        width: 100%;
+        background-color: rgb(163, 163, 163);
+    }
+}
+
+.footer {
+    background-color: $footerColor;
+    color: white;
+    width: 100%;
+    padding: 5vh 10% 5vh 10%;
+
+    &--intro {
+        border-bottom: 2px solid rgb(31, 31, 31);
+        padding-bottom: 2em;
+        p {
+            font-size: 18px;
+        }
+    }
+
+    &__links--container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+    &__body--container {
+        padding-top: 2em;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+}
