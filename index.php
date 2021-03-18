@@ -22,7 +22,7 @@
                     <h2>TANDARTS DEN BOSCH</h2>
                     <p>Uw tandarts in Den Bosch e.o. voor reguliere tandheelkunde en implantaten</p>
                     <p>Betrouwbaar. Bereikbaar. Betaalbaar.</p>
-                    <a href="">INSCHRIJVEN</a>
+                    <a class="signup--btn" href="">INSCHRIJVEN</a>
                     <a href="">AFSPRAAK MAKEN</a>
                 </div>
             </section>
@@ -60,7 +60,8 @@
                 </div>
             </section>
         </main>
-
-        
+        <?php 
+            include "includes/footer.php"
+        ?>
     </body>
 </html>
