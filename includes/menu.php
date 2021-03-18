@@ -4,13 +4,13 @@
     File:       includes/menu.php
 -->
 
-<header>
+<!-- <header>
     <div>
         <img src="/PraktijkOpdrachtThema3/images/logo_1.png" alt="Tandartspraktijk Den Bosch" />
     </div>
     <nav>
         <ul>
-            <li><a href="">Home</a></li>
+            <li><a href="/PraktijkOpdrachtThema3/">Home</a></li>
             <li><a href="">Behandelingen</a></li>
             <li><a href="">Inschrijven</a></li>
             <li><a href="">Afspraken</a></li>
@@ -19,4 +19,4 @@
             <li><a href="">Blog</a></li>
         </ul>
     </nav>
-</header>
+</header> -->

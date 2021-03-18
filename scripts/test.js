@@ -4,45 +4,41 @@
     File:       scripts/test.js
 */
 
-const colors = {
-    green: "#0dd66c",
-    orange: "#fb6340",
-    red: "#f5365c",
+const resultMessages = {
+    perfect: "U verzorgd uw gebid uitstekend!",
+    good: "U verzorgd uw gebid goed, alleen zijn er nog wel onderdelen waar u uw gedrag moet verbeteren",
+    operational: "U verzorgd uw gebid matig, en wij raden u aan om advies te gaan vragen bij de tandarts, waarschijnlijk heeft u ook als last van gebitsproblemen.",
+    bad: "U verzorgd uw gebid niet goed, daarom raden wij u aan om advies te gaan vragen bij de tandarts, waarschijnlijk bezoekt u geen tandarts en heb je ook al gebitsproblemen",
 };
 
+const classes = ["green", "orange", "red"];
 const submitBtn = document.querySelector(".submit");
 const resultElement = document.querySelector(".result");
 const selectFields = [...document.querySelectorAll("select")];
 
 submitBtn.addEventListener("click", () => {
-    resultElement.innerHTML = "Uitslag bereken...";
+    // Deze variable wordt telkens opnieuw aangemaakt wanneer de eventlistener gecalled wordt
     let result = 0;
     for (const selectField of selectFields) {
         let { value, selectedIndex, options } = selectField;
+        // Maakt van de options variable een array
         const option = [...options];
-        // console.log(selectedIndex);
-        console.log(option);
-
-        let color;
-        if (option.length == 3) {
-            if (!selectedIndex) {
-                color = colors.green;
-            } else if (selectedIndex == 1) {
-                color = colors.orange;
-            } else {
-                color = colors.red;
-            }
+        if (!selectedIndex) {
+            selectField.classList.remove(...classes);
+            selectField.classList.add(classes[0]);
+        } else if (selectedIndex == 1 && option.length == 3) {
+            selectField.classList.remove(...classes);
+            selectField.classList.add(classes[1]);
         } else {
-            if (!selectedIndex) {
-                color = colors.green;
-            } else {
-                color = colors.red;
-            }
+            selectField.classList.remove(...classes);
+            selectField.classList.add(classes[2]);
         }
-        const parent = selectField.parentElement;
-        selectField.style.backgroundColor = color;
 
         result += parseInt(value);
     }
-    resultElement.innerHTML = result;
+
+    if (result >= 80) return (resultElement.innerHTML = resultMessages.perfect);
+    if (result >= 60) return (resultElement.innerHTML = resultMessages.good);
+    if (result >= 20) return (resultElement.innerHTML = resultMessages.operational);
+    return (resultElement.innerHTML = resultMessages.bad);
 });
