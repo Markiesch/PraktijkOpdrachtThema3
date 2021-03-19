@@ -4,13 +4,14 @@
     File:       index.php
 -->
 <!DOCTYPE html>
-<html lang="en">
+<html lang="nl">
     <head>
         <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="stylesheet" href="styles/style.css" />
-        <title></title>
+        <link rel="icon" href="images/favicon.png">
+        <title>TANDARTS DEN BOSCH | HOME</title>
     </head>
     <body>
         <?php 
@@ -24,6 +25,13 @@
                     <p>Betrouwbaar. Bereikbaar. Betaalbaar.</p>
                     <a class="signup--btn" href="">INSCHRIJVEN</a>
                     <a href="">AFSPRAAK MAKEN</a>
+                </div>
+            </section>
+            <section class="test">
+                <div>
+                    <h2>GRATIS POETSTEST</h2>
+                    <p>Doe vandaag nog de poetstest en krijg direct je uitslag!</p>
+                    <a href="pages/test.php">Doe de test!</a>
                 </div>
             </section>
             <section>

@@ -5,40 +5,89 @@
 */
 
 const resultMessages = {
-    perfect: "U verzorgd uw gebid uitstekend!",
-    good: "U verzorgd uw gebid goed, alleen zijn er nog wel onderdelen waar u uw gedrag moet verbeteren",
-    operational: "U verzorgd uw gebid matig, en wij raden u aan om advies te gaan vragen bij de tandarts, waarschijnlijk heeft u ook als last van gebitsproblemen.",
-    bad: "U verzorgd uw gebid niet goed, daarom raden wij u aan om advies te gaan vragen bij de tandarts, waarschijnlijk bezoekt u geen tandarts en heb je ook al gebitsproblemen",
+    perfect: "U verzorgt uw gebid uitstekend!",
+    good: "U verzorgt uw gebid goed, er zijn echter nog wel specifieke onderdelen waar u uw poetsgedrag kunt verbeteren.",
+    operational: "U verzorgt uw gebid matig, daarom raden wij u aan om advies te vragen bij een tandarts. Waarschijnlijk heeft u ook al last van gebitsproblemen.",
+    bad: "U verzorgt uw gebid niet goed, daarom raden wij u aan om advies te vragen bij een tandarts. Waarschijnlijk bezoekt u nog geen tandarts en heeft u ook al last van gebitsproblemen",
 };
 
 const classes = ["green", "orange", "red"];
+
+// Aanspreken van HTML elementen
 const submitBtn = document.querySelector(".submit");
 const resultElement = document.querySelector(".result");
 const selectFields = [...document.querySelectorAll("select")];
+const printBtn = document.querySelector(".print--button");
+
+const earlierAttemptsBtn = document.querySelector(".clear--button");
+const earlierAttemptsContainer = document.querySelector(".earlierAttempts--container");
+const earlierAttemptsElement = document.querySelector(".earlierAttempts");
+const earlierAttempts = localStorage.getItem("results");
+if (earlierAttempts) {
+    earlierAttemptsElement.innerText += `Eerdere uitslagen:\n${earlierAttempts}`;
+    earlierAttemptsContainer.style.display = "block";
+}
 
 submitBtn.addEventListener("click", () => {
+    // Verijderd de focus wanneer iemand op het element clicked
+    submitBtn.blur();
     // Deze variable wordt telkens opnieuw aangemaakt wanneer de eventlistener gecalled wordt
     let result = 0;
     for (const selectField of selectFields) {
-        let { value, selectedIndex, options } = selectField;
+        // Destructering van het selectField object
+        const { value, selectedIndex, options } = selectField;
         // Maakt van de options variable een array
-        const option = [...options];
+        const parent = selectField.parentElement;
+        // If statement als selectedIndex false is, dit zal dus runnen als selectedIndex 0 is.
         if (!selectedIndex) {
-            selectField.classList.remove(...classes);
-            selectField.classList.add(classes[0]);
-        } else if (selectedIndex == 1 && option.length == 3) {
-            selectField.classList.remove(...classes);
-            selectField.classList.add(classes[1]);
+            // Verwijderd alle classes en add alleen de nodige aangezien classes een array is moet deze naar een string omgezet worden dit wordt gedaan
+            // met behulp van de spread operator (werkt hetzelfde als class.join(" "))
+            parent.classList.remove(...classes);
+            parent.classList.add(classes[0]);
+        } else if (selectedIndex == 1 && [...options].length == 3) {
+            parent.classList.remove(...classes);
+            parent.classList.add(classes[1]);
         } else {
-            selectField.classList.remove(...classes);
-            selectField.classList.add(classes[2]);
+            parent.classList.remove(...classes);
+            parent.classList.add(classes[2]);
         }
 
         result += parseInt(value);
     }
 
-    if (result >= 80) return (resultElement.innerHTML = resultMessages.perfect);
-    if (result >= 60) return (resultElement.innerHTML = resultMessages.good);
-    if (result >= 20) return (resultElement.innerHTML = resultMessages.operational);
-    return (resultElement.innerHTML = resultMessages.bad);
+    let message;
+
+    if (result >= 0) message = resultMessages.bad;
+    if (result >= 20) message = resultMessages.operational;
+    if (result >= 60) message = resultMessages.good;
+    if (result >= 80) message = resultMessages.perfect;
+
+    //Er wordt innerText ipv innerHTML gebruikt omdat \n anders niet als een enter wordt gezien,
+    //                                                                Voegt alleen "en" toe als result 1 is
+    resultElement.innerText = `${message}\n\n Uw Score was: ${result} punt${result == 1 ? "" : "en"}`;
+
+    // Localstorage handling
+    let newearlierAttempts;
+    if (earlierAttempts) {
+        newearlierAttempts = `${earlierAttempts}\n${result} punt${result == 1 ? "" : "en"}`;
+    } else {
+        newearlierAttempts = `${result} punt${result == 1 ? "" : "en"}`;
+    }
+    localStorage.setItem("results", newearlierAttempts);
+});
+
+printBtn.addEventListener("click", () => {
+    // Verijderd de focus wanneer iemand op het element clicked
+    printBtn.blur();
+    // Popped een afdruk schrem op
+    window.print();
+});
+
+earlierAttemptsBtn.addEventListener("click", () => {
+    // Verijderd de focus wanneer iemand op het element clicked
+    earlierAttemptsBtn.blur();
+    // Verwijderd alle data uit de localstorage
+    localStorage.clear();
+    // Reload de webpagina
+    location.reload();
 });

@@ -4,16 +4,20 @@
     File:       styles/style.scss
 */
 
+// Aanspreken variables voor veel voorkomende kleuren
 $grey-color2: #1e1e1e;
+$title-color: #4cc9a4;
 $footerColor: #2b2b2b;
 $primary-color: #0f141e;
 $grey-color: #3f3f3f;
 
+// Aanspreken fonts
 @font-face {
     font-family: "Montserrat";
     src: url(../fonts/Montserrat-Bold.ttf);
     font-weight: 600;
 }
+
 @font-face {
     font-family: "Montserrat";
     src: url(../fonts/Montserrat-Regular.ttf);
@@ -26,6 +30,17 @@ $grey-color: #3f3f3f;
     font-weight: 400;
 }
 
+// Verijwderd standaard margin en padding
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    // Zorgt ervoor wanneer je margin of padding toevoegt het niet bij de heigth of width wordt opgetelt
+    box-sizing: border-box;
+}
+
+// Zet de standaard font-family naar Montserrat met 2 fallback fonts (Niet in de * selector omdat dat de performance zou verminderen)
 body {
     font-family: "Montserrat", Arial, Helvetica, sans-serif;
 }
@@ -36,14 +51,6 @@ li {
         color: inherit;
         text-decoration: none;
     }
-}
-
-*,
-*::before,
-*::after {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
 }
 
 header {
@@ -58,7 +65,8 @@ header {
     ul {
         display: flex;
         justify-content: space-between;
-        width: 50%;
+        min-width: 50%;
+        max-width: 800px;
         margin: 0 auto;
     }
 
@@ -70,11 +78,14 @@ header {
         padding: 0.5em 1em;
         position: relative;
         display: block;
+        // Zorgt ervoor dat het psuedo ::after element niet meer zichtbaar is wanneer deze het a element verlaat
         overflow: hidden;
         font-weight: 500;
         color: rgba($color: $primary-color, $alpha: 0.6);
 
-        &:hover {
+        &:hover,
+        &:focus {
+            outline: none;
             color: $primary-color;
         }
 
@@ -85,12 +96,14 @@ header {
             right: 0;
             bottom: 0;
             height: 3px;
-            background-color: black;
-            transform: translateY(100%);
+            background-color: $grey-color2;
+            // Verplaatst het element 110% (van zijn eigen grootte) naar beneden
+            transform: translateY(110%);
             transition: transform 300ms ease, color 300ms ease;
             transform-origin: bottom;
         }
-        &:hover::after {
+        &:hover::after,
+        &:focus::after {
             transform: translateY(-40%);
         }
     }
@@ -102,6 +115,7 @@ header {
     background-image: url(../images/background.jpg);
     background-position: center;
     min-height: 50vh;
+    // Zet alle content in het midden
     display: flex;
     align-items: center;
     justify-content: center;
@@ -115,6 +129,7 @@ header {
         font-size: 21px;
     }
 
+    // selecteerd alle p tags die een p tag voor zich hebben (dus niet de eerste)
     p + p {
         margin-top: 2em;
         font-size: 16px;
@@ -122,7 +137,7 @@ header {
 
     .signup--btn {
         background-color: white;
-        color: black;
+        color: $grey-color2;
         transition: background-color 300ms ease, color 300ms ease;
         &:hover {
             background-color: $grey-color2;
@@ -131,7 +146,7 @@ header {
     }
 
     div {
-        background-color: rgba($color: black, $alpha: 0.3);
+        background-color: rgba(0, 0, 0, 0.3);
         padding: 2em 1em;
     }
 
@@ -153,15 +168,17 @@ header {
         max-width: 800px;
         margin: 0 auto;
         display: grid;
+        // Maakt 3 gelijke vlakken van de child elementen
         grid-template-columns: 1fr 1fr 1fr;
         img {
             height: 100px;
         }
 
         h3 {
-            color: #4cc9a4;
+            color: $title-color;
+            margin-top: 1em;
             font-size: 24px;
-            font-weight: 400;
+            font-weight: 500;
         }
 
         p {
@@ -175,7 +192,7 @@ header {
         a {
             display: inline-block;
             color: white;
-            background-color: black;
+            background-color: $grey-color2;
             text-decoration: none;
             padding: 0.5em 0.75em;
         }
@@ -205,13 +222,66 @@ header {
     }
 }
 
+.test {
+    padding: 7em 0;
+    min-width: 300px;
+    max-width: 70%;
+    margin: 0 auto;
+    text-align: center;
+    h2 {
+        font-size: 32px;
+        color: $grey-color2;
+        font-weight: 600;
+        position: relative;
+        display: inline-block;
+        &::after {
+            // Zet de tekst content naar "New!"
+            content: "New!";
+            font-size: 14px;
+            background-color: rgb(24, 109, 206);
+            color: white;
+            padding: 0.4em;
+            position: absolute;
+            right: -40px;
+            top: -25px;
+            // Maakt de rechter en linkbovenhoek rond
+            border-radius: 0 40% 0 40%;
+        }
+    }
+    p {
+        font-size: 24px;
+        font-weight: 500;
+        margin: 0 0 0.5em 0;
+        color: $grey-color2;
+    }
+    a {
+        display: inline-block;
+        text-decoration: none;
+        padding: 0.7em 0.5em;
+        color: #fff;
+        background-color: $grey-color2;
+        border: 3px solid $grey-color2;
+        transition: background-color 300ms ease, color 300ms ease;
+        font-weight: 600;
+        border-radius: 10px;
+        &:hover {
+            background-color: #fff;
+            color: $grey-color2;
+        }
+    }
+}
+
 .information {
     text-align: center;
+    padding: 0 0.5em;
+    max-width: 600px;
+    min-width: 60%;
+    margin: 0 auto;
     h2 {
         margin-top: 2em;
         font-size: 32px;
-        color: #3ab890;
-        font-weight: 400;
+        color: $title-color;
+        font-weight: 500;
     }
     p {
         font-weight: 400;
@@ -272,33 +342,48 @@ header {
     }
 }
 
+// Zorgt ervoor dat niet alle elementen naast elkaar komen te staan
 label,
 select {
     display: block;
 }
 
 select {
-    background-color: #eee;
+    background-color: #ebebeb;
+    min-width: 175px;
     border: none;
     margin: 0.75em 0 2em 0;
     padding: 0.75em 0.5em;
     position: relative;
-    &::after {
-        content: "";
-        width: 3px;
-        left: 0;
-        top: 0;
-        bottom: 0;
-    }
+    // Maakt de curser een pointer zodat er duidelijk gemaakt wordt dat je erop kan drukken
+    cursor: pointer;
+}
 
-    &.green::after {
-        background-color: #0dd66c;
-    }
-    &.orange::after {
-        background-color: #fb6340;
-    }
-    &.red::after {
-        background-color: #f5365c;
+label {
+    font-size: 20px;
+    font-weight: 500;
+    & + div {
+        position: relative;
+        &::before {
+            z-index: 1;
+            content: "";
+            position: absolute;
+            width: 3px;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            background-color: $grey-color;
+        }
+        // Classes die met Javascript worden toegekent
+        &.green::before {
+            background-color: #0dd66c;
+        }
+        &.orange::before {
+            background-color: #fb6340;
+        }
+        &.red::before {
+            background-color: #f5365c;
+        }
     }
 }
 
@@ -306,11 +391,16 @@ select:focus {
     outline: none;
 }
 
-section.form {
+.form {
     width: 80%;
     margin: 10vh auto;
     box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
     padding: 3em;
+    &__button--container {
+        // Duwt alle element naar de zijkanten (aangezien het er maar 2 zijn)
+        display: flex;
+        justify-content: space-between;
+    }
 }
 
 section.intro--form {
@@ -318,14 +408,75 @@ section.intro--form {
     min-height: 40vh;
 }
 
-.submit {
-    padding: 0.75em 0.5em;
-    border: none;
+.result {
+    margin-top: 1em;
+    font-size: 18px;
+    font-weight: 600;
+    color: $grey-color2;
 }
 
-@media (max-width: 600px) {
+.print--button,
+.submit,
+.clear--button {
+    // Zolang deze waarde 0.5x zo groot als de hoogte van het element word deze perfect rond
+    border-radius: 100px;
+    padding: 1em 2em;
+    // Maakt de curser een pointer zodat er duidelijk gemaakt wordt dat je erop kan drukken
+    cursor: pointer;
+    border: none;
+    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.2);
+    transition: box-shadow 300ms ease;
+    &:hover,
+    &:focus {
+        outline: none;
+        // Vervangt de bovenstaande box-shadow met een inset
+        box-shadow: inset 0px 0px 5px rgba(0, 0, 0, 0.2);
+    }
+}
+
+// Deze styles worden toegepast als de pagina kleiner is dan 950 pixels (in de breedte)
+@media (max-width: 950px) {
+    header ul {
+        flex-direction: column;
+        text-align: center;
+    }
+
     .footer {
         padding: 5vh 5% 0 5%;
         text-align: center;
+    }
+}
+
+@media print {
+    // Zorgt ervoor dat alle kleuren behouden worden wanneer de gebruiker de pagina probeert te printen
+    * {
+        -webkit-print-color-adjust: exact;
+    }
+
+    // Verwijderd de onderstaande element uit de documentflow
+    nav,
+    .intro--form,
+    .footer,
+    .print--button,
+    .submit {
+        display: none;
+    }
+
+    .form {
+        margin-top: 0;
+
+        // verwijderd het pijltje, omdat wanneer iemand de pagina print alle vragen al ingevuld zijn en er geen "indicator" hoeft te zijn dat je het "select" element kan uitklappen.
+        select {
+            -webkit-appearance: none;
+            -moz-appearance: none;
+        }
+    }
+}
+
+.earlierAttempts {
+    margin-bottom: 1em;
+    &--container {
+        display: none;
+        margin-bottom: 2rem;
     }
 }

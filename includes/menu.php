@@ -3,8 +3,7 @@
     Date:       17-3-2021
     File:       includes/menu.php
 -->
-
-<!-- <header>
+<header>
     <div>
         <img src="/PraktijkOpdrachtThema3/images/logo_1.png" alt="Tandartspraktijk Den Bosch" />
     </div>
@@ -19,4 +18,4 @@
             <li><a href="">Blog</a></li>
         </ul>
     </nav>
-</header> -->
+</header>
