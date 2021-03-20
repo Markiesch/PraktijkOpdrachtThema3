@@ -19,13 +19,13 @@ const resultElement = document.querySelector(".result");
 const selectFields = [...document.querySelectorAll("select")];
 const printBtn = document.querySelector(".print--button");
 
-const earlierAttemptsBtn = document.querySelector(".clear--button");
-const earlierAttemptsContainer = document.querySelector(".earlierAttempts--container");
-const earlierAttemptsElement = document.querySelector(".earlierAttempts");
-const earlierAttempts = localStorage.getItem("results");
-if (earlierAttempts) {
-    earlierAttemptsElement.innerText += `Eerdere uitslagen:\n${earlierAttempts}`;
-    earlierAttemptsContainer.style.display = "block";
+const attemptsBtn = document.querySelector(".clear--button");
+const attemptsContainer = document.querySelector(".earlierAttempts--container");
+const attemptsElement = document.querySelector(".earlierAttempts");
+const attempts = localStorage.getItem("results");
+if (attempts) {
+    attemptsElement.innerText = `${attempts}`;
+    attemptsContainer.style.display = "block";
 }
 
 submitBtn.addEventListener("click", () => {
@@ -67,13 +67,13 @@ submitBtn.addEventListener("click", () => {
     resultElement.innerText = `${message}\n\n Uw Score was: ${result} punt${result == 1 ? "" : "en"}`;
 
     // Localstorage handling
-    let newearlierAttempts;
-    if (earlierAttempts) {
-        newearlierAttempts = `${earlierAttempts}\n${result} punt${result == 1 ? "" : "en"}`;
+    let newAttempts;
+    if (attempts) {
+        newAttempts = `${attempts}\n${result} punt${result == 1 ? "" : "en"}`;
     } else {
-        newearlierAttempts = `${result} punt${result == 1 ? "" : "en"}`;
+        newAttempts = `${result} punt${result == 1 ? "" : "en"}`;
     }
-    localStorage.setItem("results", newearlierAttempts);
+    localStorage.setItem("results", newAttempts);
 });
 
 printBtn.addEventListener("click", () => {
@@ -83,9 +83,9 @@ printBtn.addEventListener("click", () => {
     window.print();
 });
 
-earlierAttemptsBtn.addEventListener("click", () => {
+attemptsBtn.addEventListener("click", () => {
     // Verijderd de focus wanneer iemand op het element clicked
-    earlierAttemptsBtn.blur();
+    attemptsBtn.blur();
     // Verwijderd alle data uit de localstorage
     localStorage.clear();
     // Reload de webpagina
