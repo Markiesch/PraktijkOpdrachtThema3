@@ -25,7 +25,9 @@ const attemptsElement = document.querySelector(".earlierAttempts");
 const attempts = localStorage.getItem("results");
 if (attempts) {
     attemptsElement.innerText = `${attempts}`;
-    attemptsContainer.style.display = "block";
+    attemptsContainer.style.height = "initial";
+    // Nodig om de shadow ook nog volledig te laten zien
+    attemptsContainer.style.overflow = "initial";
 }
 
 submitBtn.addEventListener("click", () => {
