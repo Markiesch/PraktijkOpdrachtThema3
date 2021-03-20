@@ -31,7 +31,7 @@
                 <div>
                     <h2>GRATIS POETSTEST</h2>
                     <p>Doe vandaag nog de poetstest en krijg direct je uitslag!</p>
-                    <a href="pages/test.php">Doe de test!</a>
+                    <a href="pages/enquete.php">Doe de test!</a>
                 </div>
             </section>
             <section>

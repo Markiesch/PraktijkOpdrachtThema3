@@ -28,6 +28,7 @@
             </section>
             <section class="form">
                 <div class="earlierAttempts--container">
+                    <p>Eerdere Uitslagen:</p>
                     <p class="earlierAttempts"></p>
                     <button class="clear--button">Clear</button>
                 </div>
