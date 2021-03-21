@@ -5,17 +5,19 @@
 -->
 <header>
     <div>
-        <img src="/PraktijkOpdrachtThema3/images/logo_1.png" alt="Tandartspraktijk Den Bosch" />
+        <a href="https://www.tandartsdenbosch.nl/" target="_blank">
+            <img src="/PraktijkOpdrachtThema3/images/logo_1.png" alt="Tandartspraktijk Den Bosch" />
+        </a>
     </div>
     <nav>
         <ul>
-            <li><a href="/PraktijkOpdrachtThema3/">Home</a></li>
-            <li><a href="">Behandelingen</a></li>
-            <li><a href="">Inschrijven</a></li>
-            <li><a href="">Afspraken</a></li>
-            <li><a href="">Over Ons</a></li>
-            <li><a href="">Contact</a></li>
-            <li><a href="">Blog</a></li>
+            <li><a href="/PraktijkOpdrachtThema3/">HOME</a></li>
+            <li><a href="">BEHANDELINGEN</a></li>
+            <li><a href="">INSCHRIJVEN</a></li>
+            <li><a href="">AFSPRAKEN</a></li>
+            <li><a href="">OVER ONS</a></li>
+            <li><a href="">CONTACT</a></li>
+            <li><a href="">BLOG</a></li>
         </ul>
     </nav>
 </header>

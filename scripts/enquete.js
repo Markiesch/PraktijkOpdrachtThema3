@@ -5,10 +5,11 @@
 */
 
 const resultMessages = {
-    perfect: "U verzorgt uw gebit uitstekend!",
-    good: "U verzorgt uw gebit goed, er zijn echter nog wel specifieke onderdelen waar u uw poetsgedrag kunt verbeteren.",
-    operational: "U verzorgt uw gebit matig, daarom raden wij u aan om advies te vragen bij een tandarts. Waarschijnlijk heeft u ook al last van gebitsproblemen.",
-    bad: "U verzorgt uw gebit niet goed, daarom raden wij u aan om advies te vragen bij een tandarts. Waarschijnlijk bezoekt u nog geen tandarts en heeft u ook al last van gebitsproblemen",
+    perfect: "<span>U verzorgt uw gebid uitstekend!</span>",
+    good: "<span>U verzorgt uw gebid goed, er zijn echter nog wel specifieke onderdelen waar u uw poetsgedrag kunt verbeteren.</span>",
+    operational: "<span class='orange'>U verzorgt uw gebid matig, daarom raden wij u aan om advies te vragen bij een tandarts. Waarschijnlijk heeft u ook al last van gebitsproblemen.</span>",
+    bad:
+        "<span class='red'>U verzorgt uw gebid niet goed, daarom raden wij u aan om advies te vragen bij een tandarts. Waarschijnlijk bezoekt u nog geen tandarts en heeft u ook al last van gebitsproblemen</span>",
 };
 
 const classes = ["green", "orange", "red"];
@@ -59,14 +60,13 @@ submitBtn.addEventListener("click", () => {
 
     let message;
 
-    if (result >= 0) message = resultMessages.bad;
+    if (result < 20) message = resultMessages.bad;
     if (result >= 20) message = resultMessages.operational;
     if (result >= 60) message = resultMessages.good;
     if (result >= 80) message = resultMessages.perfect;
 
-    //Er wordt innerText ipv innerHTML gebruikt omdat \n anders niet als een enter wordt gezien,
     //                                                                Voegt alleen "en" toe als result 1 is
-    resultElement.innerText = `${message}\n\n Uw Score was: ${result} punt${result == 1 ? "" : "en"}`;
+    resultElement.innerHTML = `${message}Uw heeft ${result} punt${result == 1 ? "" : "en"} van de 90 punten gescoord.`;
 
     // Localstorage handling
     let newAttempts;
