@@ -12,8 +12,7 @@
         <link rel="stylesheet" href="../styles/style.css" />
         <link rel="icon" href="../images/favicon.png">
         <title>TANDARTS DEN BOSCH | TEST</title>
-
-        <script src="../scripts/test.js" defer></script>
+        <script src="../scripts/enquete.js" defer></script>
     </head>
     <body>
         <?php
