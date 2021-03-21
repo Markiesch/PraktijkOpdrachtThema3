@@ -315,6 +315,9 @@ select {
     position: relative;
     // Maakt de curser een pointer zodat er duidelijk gemaakt wordt dat je erop kan drukken
     cursor: pointer;
+    &:focus {
+        outline: none;
+    }
 }
 
 label {
@@ -348,10 +351,6 @@ label {
             background-color: $red;
         }
     }
-}
-
-select:focus {
-    outline: none;
 }
 
 .form {
@@ -519,6 +518,7 @@ section.intro--form {
     }
 
     .form {
+        width: 95%;
         margin-top: 0;
         // verwijderd het pijltje, omdat wanneer iemand de pagina print alle vragen al ingevuld zijn en er geen "indicator" hoeft te zijn dat je het "select" element kan uitklappen.
         select {
@@ -528,6 +528,21 @@ section.intro--form {
     }
 
     label {
-        font-size: 20px;
+        font-size: 16px;
+    }
+
+    select {
+        font-size: 14px;
+        margin: 0.5em 0 1em 0;
+        padding: 0.25em 0.5em;
+    }
+    .result {
+        margin-top: 1em;
+        font-size: 14px;
+        font-weight: 500;
+        span {
+            margin-bottom: 0.5em;
+            font-size: 16px;
+        }
     }
 }
