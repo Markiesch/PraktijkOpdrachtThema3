@@ -5,10 +5,10 @@
 */
 
 const resultMessages = {
-    perfect: "U verzorgt uw gebid uitstekend!",
-    good: "U verzorgt uw gebid goed, er zijn echter nog wel specifieke onderdelen waar u uw poetsgedrag kunt verbeteren.",
-    operational: "U verzorgt uw gebid matig, daarom raden wij u aan om advies te vragen bij een tandarts. Waarschijnlijk heeft u ook al last van gebitsproblemen.",
-    bad: "U verzorgt uw gebid niet goed, daarom raden wij u aan om advies te vragen bij een tandarts. Waarschijnlijk bezoekt u nog geen tandarts en heeft u ook al last van gebitsproblemen",
+    perfect: "U verzorgt uw gebit uitstekend!",
+    good: "U verzorgt uw gebit goed, er zijn echter nog wel specifieke onderdelen waar u uw poetsgedrag kunt verbeteren.",
+    operational: "U verzorgt uw gebit matig, daarom raden wij u aan om advies te vragen bij een tandarts. Waarschijnlijk heeft u ook al last van gebitsproblemen.",
+    bad: "U verzorgt uw gebit niet goed, daarom raden wij u aan om advies te vragen bij een tandarts. Waarschijnlijk bezoekt u nog geen tandarts en heeft u ook al last van gebitsproblemen",
 };
 
 const classes = ["green", "orange", "red"];
