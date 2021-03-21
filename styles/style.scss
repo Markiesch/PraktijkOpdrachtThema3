@@ -18,8 +18,8 @@ $red: #f5365c;
 // Aanspreken fonts
 @font-face {
     font-family: "Montserrat";
-    src: url(../fonts/Montserrat-Bold.ttf);
-    font-weight: 600;
+    src: url(../fonts/Montserrat-Light.ttf);
+    font-weight: 400;
 }
 
 @font-face {
@@ -30,8 +30,8 @@ $red: #f5365c;
 
 @font-face {
     font-family: "Montserrat";
-    src: url(../fonts/Montserrat-Light.ttf);
-    font-weight: 400;
+    src: url(../fonts/Montserrat-Bold.ttf);
+    font-weight: 600;
 }
 
 // Verijwderd standaard margin en padding
@@ -70,6 +70,40 @@ header {
     nav {
         border-top: 1px solid rgba(0, 0, 0, 0.1);
         width: 100%;
+        a {
+            padding: 1em 0;
+            position: relative;
+            display: block;
+            // Zorgt ervoor dat het psuedo ::after element niet meer zichtbaar is wanneer deze het a element verlaat
+            overflow: hidden;
+            font-size: 14px;
+            font-weight: 600;
+            color: rgba($color: $primary-color, $alpha: 0.6);
+
+            &:hover,
+            &:focus {
+                outline: none;
+                color: $primary-color;
+            }
+
+            &::after {
+                content: "";
+                position: absolute;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                height: 3px;
+                background-color: $grey-color2;
+                // Verplaatst het element 110% (van zijn eigen grootte) naar beneden
+                transform: translateY(110%);
+                transition: transform 300ms ease, color 300ms ease;
+                transform-origin: bottom;
+            }
+            &:hover::after,
+            &:focus::after {
+                transform: translateY(-40%);
+            }
+        }
     }
 
     ul {
@@ -78,41 +112,6 @@ header {
         min-width: 40%;
         max-width: 800px;
         margin: 0 auto;
-    }
-
-    a {
-        padding: 1em 0;
-        position: relative;
-        display: block;
-        // Zorgt ervoor dat het psuedo ::after element niet meer zichtbaar is wanneer deze het a element verlaat
-        overflow: hidden;
-        font-size: 16px;
-        font-weight: 500;
-        color: rgba($color: $primary-color, $alpha: 0.6);
-
-        &:hover,
-        &:focus {
-            outline: none;
-            color: $primary-color;
-        }
-
-        &::after {
-            content: "";
-            position: absolute;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            height: 3px;
-            background-color: $grey-color2;
-            // Verplaatst het element 110% (van zijn eigen grootte) naar beneden
-            transform: translateY(110%);
-            transition: transform 300ms ease, color 300ms ease;
-            transform-origin: bottom;
-        }
-        &:hover::after,
-        &:focus::after {
-            transform: translateY(-40%);
-        }
     }
 }
 
