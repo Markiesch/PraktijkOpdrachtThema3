@@ -5,11 +5,11 @@
 */
 
 const resultMessages = {
-    perfect: "<span>U verzorgt uw gebid uitstekend!</span>",
-    good: "<span>U verzorgt uw gebid goed, er zijn echter nog wel specifieke onderdelen waar u uw poetsgedrag kunt verbeteren.</span>",
-    operational: "<span class='orange'>U verzorgt uw gebid matig, daarom raden wij u aan om advies te vragen bij een tandarts. Waarschijnlijk heeft u ook al last van gebitsproblemen.</span>",
+    perfect: "<span>U verzorgt uw gebit uitstekend!</span>",
+    good: "<span>U verzorgt uw gebit goed, er zijn echter nog wel specifieke onderdelen waar u uw poetsgedrag kunt verbeteren.</span>",
+    operational: "<span class='orange'>U verzorgt uw gebit matig, daarom raden wij u aan om advies te vragen bij een tandarts. Waarschijnlijk heeft u ook al last van gebitsproblemen.</span>",
     bad:
-        "<span class='red'>U verzorgt uw gebid niet goed, daarom raden wij u aan om advies te vragen bij een tandarts. Waarschijnlijk bezoekt u nog geen tandarts en heeft u ook al last van gebitsproblemen</span>",
+        "<span class='red'>U verzorgt uw gebit niet goed, daarom raden wij u aan om advies te vragen bij een tandarts. Waarschijnlijk bezoekt u nog geen tandarts en heeft u ook al last van gebitsproblemen</span>",
 };
 
 const classes = ["green", "orange", "red"];
@@ -65,12 +65,12 @@ submitBtn.addEventListener("click", () => {
     if (result >= 60) message = resultMessages.good;
     if (result >= 80) message = resultMessages.perfect;
 
-    //                                                                Voegt alleen "en" toe als result 1 is
-    resultElement.innerHTML = `${message}Uw heeft ${result} punt${result == 1 ? "" : "en"} van de 90 punten gescoord.`;
+    resultElement.innerHTML = `${message}Uw heeft ${result} van de 90 punten gescoord.`;
 
     // Localstorage handling
     let newAttempts;
     if (attempts) {
+        //                                    Voegt alleen "en" toe als result 1 is
         newAttempts = `${attempts}\n${result} punt${result == 1 ? "" : "en"}`;
     } else {
         newAttempts = `${result} punt${result == 1 ? "" : "en"}`;
