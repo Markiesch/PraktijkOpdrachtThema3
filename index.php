@@ -38,7 +38,6 @@
                 <div class="information">
                     <h2>TANDARTS DEN BOSCH NEEMT NOG PATIËNTEN AAN!</h2>
                     <p>U kunt zich eenvoudig online inschrijven bij onze praktijk. Uiteraard staan we u ook graag telefonisch te woord.</p>
-                    <img src="" alt="" />
                 </div>
                 <div class="intro__signup--section">
                     <div>
