@@ -1,6 +1,6 @@
 <div align="center">
     <a>
-        <img src="src/images/favicon.png" alt="Logo" width="80" height="80" />
+        <img src="images/favicon.png" alt="Logo" width="80" height="80" />
     </a>
     <h1>Tandarts Den Bosch - Opdracht Thema 3</h1>
     <p>A small website builded for patients at Tandarts Den Bosch (not for use purposes) where patients can do a test for a brushscore</p>
